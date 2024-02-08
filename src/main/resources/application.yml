@@ -1,18 +1,21 @@
 server:
-  port: 8484
+  port: 8282
 
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/spring
+    url: jdbc:mariadb://localhost:3307/spring
     username: root
     password: mariadb
+    hikari:
+      maximum-pool-size: 15  # 예: 필요한 수로 조절
   jpa:
     # SQL??? ?? ? ?? DBMS? ???? ??? ????
     database-platform: org.hibernate.dialect.MariaDB106Dialect
     hibernate:
+
       # ddl? ???? ??
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true   # SQL ??? ????? ??? ?? ??
@@ -34,5 +37,12 @@ jwt:
   secret: /G6WJKGRhFp3a4p4dUXAUVdFlxw2piECNh2FA9gAQUoisEe391B8uxuZi8pbqFVhj8xP8YRHANnxPQv1Wj3a3w==
 
 upload:
-  path: /Users/superstar/spring-prj/upload
+  path: D:\upload
 
+# s3 setting
+aws:
+  credentials:
+    accessKey: AKIAYS2NWCN3VHO2HWU5
+    secretKey: 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
+  region: ap-northeast-2
+  bucketName: spring-todo-api-file-bucket-kyu
